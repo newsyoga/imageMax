@@ -30,7 +30,7 @@ find "$INPUT_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png"
     # Calculate the height-to-width ratio
     ratio=$(echo "scale=4; $height / $width" | bc)
 
-    
+
 
 
     is_greater=$(echo "$ratio > 0.8" | bc)
@@ -41,7 +41,7 @@ find "$INPUT_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png"
         widthr=$(awk "BEGIN { printf \"%.0f\", $heightr / 0.8 }")
         magick "$img" -gravity center -background white -extent ${widthr}x$heightr "$out_file"
       }
-      
+
 #--------------------------
 
 
@@ -50,9 +50,10 @@ find "$INPUT_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png"
 
 
     else
-      cp "$img" "$out_file_location"
+      magick "$img" "$out_file"
     fi
-    
+
+    echo "resizing $out_file"
     magick "$out_file" -resize '1200x>' "$out_file"
 
 

@@ -12,7 +12,7 @@ OUTPUT_DIR="./webp_output_$QUALITY"
 mkdir -p "$OUTPUT_DIR"
 
 # Convert images and preserve folder structure
-find "$INPUT_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.bmp" -o -iname "*.tiff" \) | while read -r img; do
+find "$INPUT_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.tiff" \) | while read -r img; do
     # Relative path from input dir
     rel_path="${img#./}"
     rel_dir=$(dirname "$rel_path")
